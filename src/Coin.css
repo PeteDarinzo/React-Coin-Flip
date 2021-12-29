@@ -1,0 +1,11 @@
+.Coin {
+  padding: 0;
+  margin: 0;
+  min-height: 300px;
+}
+
+.Coin-image {
+  padding: 0;
+  margin: 0;
+  height: 300px;
+}
