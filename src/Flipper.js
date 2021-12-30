@@ -8,7 +8,6 @@ function Flipper(props) {
   const [side, setSide] = useState(null);
   /** hook for coin flip statistics */
   const [count, setCount] = useState({
-    total: 0,
     heads: 0,
     tails: 0
   });
@@ -31,7 +30,6 @@ function Flipper(props) {
   const reset = () => {
     setSide(null);
     setCount({
-      total: 0,
       heads: 0,
       tails: 0
     });
@@ -46,7 +44,6 @@ function Flipper(props) {
     // the entire object must be passed into the set function, since it replaced, not merged
     setCount(c => ({
       ...c, // spread all values into the new object, note that only the face-down side will be unchanged
-      ["total"]: c["total"] + 1, // total count will always be updated
       [side]: c[side] + 1 // take the face up side, and increment
     }));
   }
@@ -57,7 +54,7 @@ function Flipper(props) {
       <Coin face={side} />
       <button className="Flipper-button" onClick={flip}>Flip</button>
       <button className="Flipper-button" onClick={reset}>Reset</button>
-      <p>Out of {count.total} flips, there have been {count.heads} heads and {count.tails} tails.</p>
+      <p>Out of {count.heads + count.tails} flips, there have been {count.heads} heads and {count.tails} tails.</p>
     </div>
   );
 }
