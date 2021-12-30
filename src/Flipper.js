@@ -41,14 +41,14 @@ function Flipper(props) {
    * Explanation of using state with objects: https://react-hooks-cheatsheet.com/usestate
    */
   const flip = () => {
-    // determine the new side, cast as a String to avoid errors when updating the count
+    // determine the new side, cast as a String to avoid error when updating the count
     const side = String(setSide(generateSide()));
     // the entire object must be passed into the set function, since it replaced, not merged
-    setCount({
-      ...count, // spread all values into the new object, note that only the face-down side will be unchanged
-      ["total"]: count["total"] + 1, // total count will always be updated
-      [side]: count[side] + 1 // take the face up side, and increment
-    });
+    setCount(c => ({
+      ...c, // spread all values into the new object, note that only the face-down side will be unchanged
+      ["total"]: c["total"] + 1, // total count will always be updated
+      [side]: c[side] + 1 // take the face up side, and increment
+    }));
   }
 
   return (
